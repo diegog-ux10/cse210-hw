@@ -1,6 +1,6 @@
 public class Journal
 {
-    public List<Entry> Entries = new List<Entry>();
+    private List<Entry> Entries = new List<Entry>();
 
     public void AddEntry(string Prompt, string userAnswer) 
     {
@@ -61,10 +61,5 @@ public class Journal
             Entry newEntry = new Entry(date, prompt, content);
             Entries.Add(newEntry);
         }
-    }
-
-    public void DeletedEntry()
-    {
-
     }
 }

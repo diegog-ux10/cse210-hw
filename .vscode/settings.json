@@ -1,0 +1,8 @@
+{
+  "[csharp]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "csharpier.csharpier-vscode"
+  },
+
+  "editor.rulers": [88]
+}

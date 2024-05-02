@@ -18,7 +18,10 @@ public class Entry {
 
     public void Display()
     {
-        Console.WriteLine($"{_date} {_prompText} {_entryText}");
+        string date = _date.ToShortDateString();
+        Console.WriteLine($"Date: {date} - Prompt: {_prompText}");
+        Console.WriteLine(_entryText);
+        Console.WriteLine();
     }
 
 }

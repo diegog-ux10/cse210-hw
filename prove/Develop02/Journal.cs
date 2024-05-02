@@ -35,12 +35,7 @@ public class Journal {
     public void DisplayJournal()
     {
         foreach (Entry entry in _entries) {
-            string date = entry._date.ToShortDateString();
-            string prompt = entry._prompText; 
-            string content = entry._entryText; 
-            Console.WriteLine($"Date: {date} - Prompt: {prompt}");
-            Console.WriteLine(content);
-            Console.WriteLine();
+            entry.Display();
         }
         Console.WriteLine("Press Enter to continue");
         Console.ReadKey();

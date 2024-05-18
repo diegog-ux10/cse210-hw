@@ -4,8 +4,26 @@ class Program
 {
     static void Main(string[] args)
     {
-        Reference reference = new Reference("Proverbs", 3, 5, 6);
-        string scriptureText = "Trust in the Lord with all your heart and lean not on your own understanding; in all your ways submit to him, and he will make your paths straight.";
+        // exceed what is required.
+        // by add the function that user can choose the reference to the script and write the script.
+        Console.WriteLine("Enter the book:");
+        string book = Console.ReadLine();
+
+        Console.WriteLine("Enter the chapter:");
+        int chapter = int.Parse(Console.ReadLine());
+
+        Console.WriteLine("Enter the verse:");
+        int verse = int.Parse(Console.ReadLine());
+
+        Console.WriteLine("Enter the end verse (optional, press Enter to skip):");
+        string endVerseInput = Console.ReadLine();
+        int? endVerse = string.IsNullOrEmpty(endVerseInput) ? null : (int?)int.Parse(endVerseInput);
+
+        Console.WriteLine("Enter the text of the scripture:");
+        string scriptureText = Console.ReadLine();
+
+
+        Reference reference = new Reference(book, chapter, verse, endVerse);
         Scripture scripture = new Scripture(reference, scriptureText);
 
         while (true)

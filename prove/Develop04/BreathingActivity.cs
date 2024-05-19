@@ -2,14 +2,14 @@ public class BreathingActivity : MindfulnessActivity
 {
     public BreathingActivity()
     {
-        Name = "Breathing";
-        Description = "This activity will help you relax by walking you through breathing in and out slowly. Clear your mind and focus on your breathing.";
+        _name = "Breathing";
+        _description = "This activity will help you relax by walking you through breathing in and out slowly. Clear your mind and focus on your breathing.";
     }
 
     protected override void ExecuteActivity()
     {
         int elapsed = 0;
-        while (elapsed < Duration)
+        while (elapsed < _duration)
         {
             Console.WriteLine("Breathe in...");
             Pause(6);

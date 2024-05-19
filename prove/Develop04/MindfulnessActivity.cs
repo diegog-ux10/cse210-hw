@@ -3,17 +3,17 @@ using System.Threading;
 
 public abstract class MindfulnessActivity
 {
-    public string Name { get; set; }
-    public string Description { get; set; }
-    public int Duration { get; set; }
+    protected string _name;
+    protected string _description;
+    protected int _duration;
 
     public void Start()
     {
         Console.Clear();
-        Console.WriteLine($"{Name} Activity");
-        Console.WriteLine(Description);
+        Console.WriteLine($"{this._name} Activity");
+        Console.WriteLine(this._description);
         Console.WriteLine("Enter the duration of the activity in seconds:");
-        Duration = int.Parse(Console.ReadLine());
+        this._duration = int.Parse(Console.ReadLine());
         Console.WriteLine("Prepare to begin...");
         Pause(3);
         ExecuteActivity();
@@ -46,7 +46,7 @@ public abstract class MindfulnessActivity
     protected void End()
     {
         Console.WriteLine("Good job! You have completed the activity.");
-        Console.WriteLine($"Activity: {Name}, Duration: {Duration} seconds");
+        Console.WriteLine($"Activity: {this._name}, Duration: {this._duration} seconds");
         Pause(3);
     }
 }

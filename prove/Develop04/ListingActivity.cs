@@ -11,8 +11,8 @@ public class ListingActivity : MindfulnessActivity
 
     public ListingActivity()
     {
-        Name = "Listing";
-        Description = "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.";
+        _name = "Listing";
+        _description = "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.";
     }
 
     protected override void ExecuteActivity()
@@ -24,7 +24,7 @@ public class ListingActivity : MindfulnessActivity
         Pause(3);
         int elapsed = 0;
         int count = 0;
-        while (elapsed < Duration)
+        while (elapsed < _duration)
         {
             Console.ReadLine();
             count++;

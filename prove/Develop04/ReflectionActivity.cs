@@ -23,8 +23,8 @@ public class ReflectionActivity : MindfulnessActivity
 
     public ReflectionActivity()
     {
-        Name = "Reflection";
-        Description = "This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.";
+        _name = "Reflection";
+        _description = "This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.";
     }
 
     protected override void ExecuteActivity()
@@ -36,7 +36,7 @@ public class ReflectionActivity : MindfulnessActivity
         Console.WriteLine("Now ponder on each of the following questions as they related to this experience.");
         Countdown(5);
         int elapsed = 0;
-        while (elapsed < Duration)
+        while (elapsed < _duration)
         {
             Console.WriteLine(Questions[rand.Next(Questions.Length)]);
             Pause(10);

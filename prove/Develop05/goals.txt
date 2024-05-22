@@ -1,0 +1,4 @@
+1055
+SimpleGoal:Kill Maduro,kill the president maduro,1000,True
+EternalGoal:pray every day,pray always,50
+ChecklistGoal:gym,go to the gym evrey day,5,1000,100,1

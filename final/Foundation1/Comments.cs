@@ -1,24 +1,16 @@
-using System;
-
-public class Comment 
+class Comment
 {
-   public string _name;
-   public string _text;
+    private string _username;
+    private string _text;
 
-    public Comment()
+    public Comment(string commenterName, string text)
     {
-
+        this._username = commenterName;
+        this._text = text;
     }
 
-    public Comment(string name, string text)
+    public string DisplayComment()
     {
-        _name = name;
-        _text = text;
+        return $"{this._username}: {this._text}";
     }
-
-    public void GetComment()
-    {
-        Console.WriteLine($"{_name} says: {_text}");
-    }
-
 }

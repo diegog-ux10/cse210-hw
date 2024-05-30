@@ -1,53 +1,31 @@
-using System;
-
 class Program
 {
     static void Main(string[] args)
     {
-       List<Video> videoList = new List<Video>();
-        
-       Video v1 = new Video();
-       v1._title = "Hamlet play";
-       v1._author = "Shakespeare";
-       v1._lenght = 30;
+        List<Video> videos = new List<Video>();
 
-       Comment comment1v1 = new Comment();
-       comment1v1._name = "Susan Boyle";
-       comment1v1._text = "This play is awesome!";
+        Video video1 = new Video("Introduction to C#", "John Doe", 300);
+        video1.AddComment(new Comment("Alice", "Great video!"));
+        video1.AddComment(new Comment("Bob", "Very informative."));
+        video1.AddComment(new Comment("Charlie", "I learned a lot."));
 
-       Comment comment2v1 = new Comment("Paul Mcarthur", "I love the way how this play is perfomed!");
-       Comment comment3v1 = new Comment("Anne Flower", "I think the audio could be better.");
+        Video video2 = new Video("Advanced C# Techniques", "Jane Smith", 600);
+        video2.AddComment(new Comment("Dave", "Excellent content."));
+        video2.AddComment(new Comment("Eve", "Helpful tips."));
+        video2.AddComment(new Comment("Frank", "Thanks for sharing."));
 
-        v1._comments.Add(comment1v1);
-        v1._comments.Add(comment2v1);
-        v1._comments.Add(comment3v1);
+        Video video3 = new Video("C# Design Patterns", "Mike Johnson", 450);
+        video3.AddComment(new Comment("Grace", "Well explained."));
+        video3.AddComment(new Comment("Heidi", "Clear and concise."));
+        video3.AddComment(new Comment("Ivan", "Very useful."));
 
-        Video v2 = new Video("Cosmos", "Carl Sagan", 12);
-        Comment comment1v2 = new Comment("John Locke", "This is my favorite TV show!");
-        Comment comment2v2 = new Comment("Albert Einstein", "Carl is the best host ever!");
-        Comment comment3v2 = new Comment("Marie Curie", "I think really interesting this theme.");
+        videos.Add(video1);
+        videos.Add(video2);
+        videos.Add(video3);
 
-        v2._comments.Add(comment1v2);
-        v2._comments.Add(comment2v2);
-        v2._comments.Add(comment3v2);
-
-        Video v3 = new Video("Animal planet", "Discovery Channel", 7);
-        Comment comment1v3 = new Comment("Vin Diesel", "I didn't know that the wilderness was so dangerous.");
-        Comment comment2v3 = new Comment("Elvis Presley", "It's impressive as animals survive there.");
-        Comment comment3v3 = new Comment("Barack Obama", "Sustainable is a very important topic in this video.");
-
-        v3._comments.Add(comment1v3);
-        v3._comments.Add(comment2v3);
-        v3._comments.Add(comment3v3);
-
-        videoList.Add(v1);
-        videoList.Add(v2);
-        videoList.Add(v3);
-
-        foreach (Video video in videoList)
+        foreach (var video in videos)
         {
-            Console.WriteLine(video.GetVideoDetails());
-            video.GetComments();
+            video.GetVideoDetails();
         }
     }
 }

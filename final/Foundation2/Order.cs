@@ -1,72 +1,42 @@
 using System;
-
-public class Order
+class Order
 {
-    private Customer _customer = new Customer();
-
     private List<Product> _products = new List<Product>();
+    private Customer _customer;
 
-
-
-
-public string GetPackingLabel()
-{
-    string packLabel="";
-    int order = 1;
-
-    foreach (Product product in _products)
+    public Order(Customer customer)
     {
-        packLabel += $"{order}.{product.GetPack()}\n";
-        order++; 
-
+        this._customer = customer;
     }
 
-    return packLabel;
-}
-
-public string GetShippingLabel()
-{
-    return($"Name:{_customer.GetName()}\n{_customer.GetAddress()}");
-}
-
-public double GetShippingCost()
-{
-    if (_customer.IsUSA())
+    public void AddProduct(Product product)
     {
-        return 5;
-    } else
-    {
-        return 35;
-    }
-}
-
-public double GetTotal()
-{
-    double sum = 0;
-
-    foreach (Product product in _products)
-    {
-        sum += product.GetProductTotal();
+        this._products.Add(product);
     }
 
-    sum += GetShippingCost();
+    public decimal GetTotalCost()
+    {
+        decimal total = 0;
+        foreach (Product product in this._products)
+        {
+            total += product.GetTotalCost();
+        }
+        total += this._customer.IsInUSA() ? 5 : 35;
+        return total;
+    }
 
-    return sum;
-}
+    public string GetPackingLabel()
+    {
+        string label = "Packing Label:\n";
+        foreach (Product product in this._products)
+        {
+            label += $"{product.GetProductName()} ({product.GetProductID()})\n";
+        }
+        return label;
+    }
 
-public void SetName(string name)
-{
-    _customer.SetName(name);
-}
-
-public void SetAddress(string address, string city, string state, string country)
-{
-    _customer.SetAddress(address, city, state, country);
-}
-
-public void AddList(Product product)
-{
-    _products.Add(product);
-}
-
+    public string GetShippingLabel()
+    {
+        return $"Shipping Label:\n{this._customer.GetCustomerName()}\n{this._customer.GetCustomerAddress()}";
+    }
 }

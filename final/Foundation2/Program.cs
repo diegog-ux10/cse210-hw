@@ -1,45 +1,29 @@
-using System;
-
 class Program
 {
     static void Main(string[] args)
     {
-        Order order1 = new Order();
-        order1.SetName("Paulo Cauas");
-        order1.SetAddress("9th Street", "Nottingham", "New York", "USA");
+        Address address1 = new Address("123 Elm St", "Springfield", "IL", "USA");
+        Customer customer1 = new Customer("John Doe", address1);
 
-        Product product1 = new Product("Cookie", "001", 4.50, 5);
-        Product product2 = new Product("Pasta", "002", 8.93, 3);
-        Product product3 = new Product("Shampoo", "003", 7.89, 1);
+        Order order1 = new Order(customer1);
+        order1.AddProduct(new Product("Widget", "W123", 19.99m, 2));
+        order1.AddProduct(new Product("Gadget", "G456", 24.99m, 1));
 
-        order1.AddList(product1);
-        order1.AddList(product2);
-        order1.AddList(product3);
+        Address address2 = new Address("456 Oak St", "Toronto", "ON", "Canada");
+        Customer customer2 = new Customer("Jane Smith", address2);
 
-        Order order2 = new Order();
-        order2.SetName("Steven Langston");
-        order2.SetAddress("Copacabana Avenue", "Rio de Janeiro", "Rio de Janeiro", "Brazil");
+        Order order2 = new Order(customer2);
+        order2.AddProduct(new Product("Thingamajig", "T789", 14.99m, 3));
+        order2.AddProduct(new Product("Doohickey", "D012", 29.99m, 2));
 
-        Product product4 = new Product("Laptop", "009", 2300.00, 1);
-        Product product5 = new Product("Guitar", "015", 847.56, 1);
-        Product product6 = new Product("Headphone", "007", 59.08, 1);
+        List<Order> orders = new List<Order> { order1, order2 };
 
-        order2.AddList(product4);
-        order2.AddList(product5);
-        order2.AddList(product6);
-
-        Console.WriteLine("Order 1:");
-
-        Console.WriteLine($"Packing Label\n{order1.GetPackingLabel()}");
-        Console.WriteLine($"Shipping Label:\n{order1.GetShippingLabel()}");
-        Console.WriteLine($"\nTotal: ${order1.GetTotal()}");
-
-        Console.WriteLine("Order 2:");
-
-        Console.WriteLine($"Packing Label\n{order2.GetPackingLabel()}");
-        Console.WriteLine($"Shipping Label:\n{order2.GetShippingLabel()}");
-        Console.WriteLine($"\nTotal: ${order2.GetTotal()}");
-
-
+        foreach (var order in orders)
+        {
+            Console.WriteLine(order.GetPackingLabel());
+            Console.WriteLine(order.GetShippingLabel());
+            Console.WriteLine($"Total Cost: {order.GetTotalCost()}");
+            Console.WriteLine();
+        }
     }
 }

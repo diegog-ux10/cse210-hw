@@ -1,9 +1,9 @@
 class Video
 {
-    private string _title { get; set; }
-    private string _author { get; set; }
-    private int _length { get; set; }
-    private List<Comment> _comments { get; set; } = new List<Comment>();
+    private string _title;
+    private string _author;
+    private int _length;
+    private readonly List<Comment> _comments = new List<Comment>();
 
     public Video(string title, string author, int length)
     {

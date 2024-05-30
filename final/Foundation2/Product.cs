@@ -1,42 +1,32 @@
 using System;
 
-public class Product
+class Product
 {
-    private string _name;
+    private readonly string _name;
     private string _productId;
-    private double _price;
-    private double _quantity;
+    private decimal _price;
+    private int _quantity;
 
-public Product()
-{
+    public Product(string name, string productId, decimal price, int quantity)
+    {
+        this._name = name;
+        this._productId = productId;
+        this._price = price;
+        this._quantity = quantity;
+    }
 
+    public decimal GetTotalCost()
+    {
+        return this._price * this._quantity;
+    }
+
+    public string GetProductName()
+    {
+        return this._name;
+    }
+
+    public string GetProductID()
+    {
+        return this._productId;
+    }
 }
-
-public Product(string name, string id, double price, double quantity)
-{
-    _name = name;
-    _productId = id;
-    _price = price;
-    _quantity = quantity;
-}
-public double GetProductTotal()
-{
-    return _price * _quantity;
-}
-
-public void SetProduct(string name, string id, double price, double quantity)
-{
-    _name = name;
-    _productId = id;
-    _price = price;
-    _quantity = quantity;
-}
-
-public string GetPack()
-{
-    return($"ID/Name: {_productId}/{_name}");
-}
-
-}
-
-

@@ -1,40 +1,28 @@
 using System;
 
-public class Customer
+class Customer
 {
     private string _name;
-    private Address  _address = new Address();
+    private Address _address; 
 
-public Customer()
-{
+    public Customer(string name, Address address)
+    {
+        this._name = name;
+        this._address = address;
+    }
 
-}
+    public bool IsInUSA()
+    {
+        return this._address.IsInUSA();
+    }
 
-public bool IsUSA()
-{
-    return _address.GetUSA();
-}
+    public string GetCustomerName()
+    {
+        return this._name;
+    }
 
-
-public string GetName()
-{
-    return _name;
-}
-
-public string GetAddress()
-{
-    return _address.GetAddress();
-}
-
-public void SetName(string name)
-{
-    _name = name;
-
-}
-
-public void SetAddress(string address, string city, string state, string country)
-{
-    _address.SetAddress(address, city, state, country);
-}
-
+    public string GetCustomerAddress()
+    {
+        return this._address.ToString();
+    }
 }

@@ -1,22 +1,15 @@
-using System;
-
 class Program
 {
     static void Main(string[] args)
     {
-        Console.Clear();
+        List<Activity> activities = new List<Activity>
+        {
+            new Running(DateTime.Now.AddDays(-1), 30, 3), // 3 miles in 30 minutes
+            new Cycling(DateTime.Now.AddDays(-2), 45, 12), // 12 mph for 45 minutes
+            new Swimming(DateTime.Now.AddDays(-3), 60, 40) // 40 laps in 60 minutes
+        };
 
-        List<Activity> list = new List<Activity>();
-        
-        Running run = new Running(10, 2023, 7, 15, 60);
-        Cycling cyc = new Cycling(25, 2023, 12, 25, 35);
-        Swimming swim = new Swimming(13, 2023, 4, 17, 3);
-
-        list.Add(run);
-        list.Add(cyc);
-        list.Add(swim);
-
-        foreach (Activity activity in list)
+        foreach (var activity in activities)
         {
             Console.WriteLine(activity.GetSummary());
         }

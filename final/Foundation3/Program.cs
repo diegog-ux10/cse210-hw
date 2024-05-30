@@ -1,27 +1,29 @@
-using System;
-
 class Program
 {
     static void Main(string[] args)
     {
-    Console.Clear();
-    Lectures lec = new Lectures("John Smith", 50, "Restoration", "The basis of Restoration", "07/22/2023", "8:30 p.m");
-    lec.SetAddress("5th Street", "Albany", "New York", "USA");
-    Console.WriteLine($"\n{lec.GetStandardDetails()}");
-    Console.WriteLine($"\n{lec.GetShortDescription()}");
-    lec.GetFullInformation();
+        Address address1 = new Address("123 Elm St", "Springfield", "IL", "USA");
+        Address address2 = new Address("456 Oak St", "Toronto", "ON", "Canada");
+        Address address3 = new Address("789 Pine St", "Vancouver", "BC", "Canada");
 
-    Receptions rec = new Receptions("jpaulocts@gmail.com", "Gospel", "The Jesus Christ Teachings", "08/12/2023", "04:00 p.m");
-    rec.SetAddress("Downing Street", "London", "London", "UK");
-    Console.WriteLine($"\n{rec.GetStandardDetails()}");
-    Console.WriteLine($"\n{rec.GetShortDescription()}");
-    rec.GetFullInformation();   
+        Lecture lecture = new("C# Basics", "Introduction to C#", DateTime.Now.AddDays(10), "10:00 AM", address1, "John Doe", 50);
+        Reception reception = new("Company Gala", "Annual company gala", DateTime.Now.AddDays(20), "6:00 PM", address2);
+        OutdoorGathering outdoor = new("Picnic in the Park", "Community picnic", DateTime.Now.AddDays(30), "2:00 PM", address3, "Sunny");
 
-    Outdoor outdoor = new Outdoor("Sunny", "BYU weekly gathering", "Course210 Team Activity", "09/13/2023", "10:00 a.m");
-    outdoor.SetAddress("Oliveira Street", "Recife", "Pernambuco", "Brazil");
-    Console.WriteLine($"\n{outdoor.GetStandardDetails()}");
-    Console.WriteLine($"\n{outdoor.GetShortDescription()}");
-    outdoor.GetFullInformation(); 
+        reception.RegisterAttendance("John Doe");
+        reception.RegisterAttendance("Mike Lee");
+        reception.RegisterAttendance("Julia Moore");
 
+        List<Event> events = new List<Event> { lecture, reception, outdoor };
+
+        foreach (Event ev in events)
+        {
+            Console.WriteLine(ev.GetStandardDetails());
+            Console.WriteLine();
+            Console.WriteLine(ev.GetFullDetails());
+            Console.WriteLine();
+            Console.WriteLine(ev.GetShortDescription());
+            Console.WriteLine();
+        }
     }
 }

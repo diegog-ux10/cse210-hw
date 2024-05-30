@@ -3,9 +3,9 @@ using System;
 class Product
 {
     private readonly string _name;
-    private string _productId;
-    private decimal _price;
-    private int _quantity;
+    private readonly string _productId;
+    private readonly decimal _price;
+    private readonly int _quantity;
 
     public Product(string name, string productId, decimal price, int quantity)
     {

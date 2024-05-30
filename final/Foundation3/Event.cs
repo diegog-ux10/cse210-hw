@@ -1,44 +1,31 @@
 using System;
 
-public class Event 
+abstract class Event
 {
-    private string _title;
-    private string _description;
-    private string _date;
-    private string _time;
-    private Address _address = new Address();
+    protected readonly string _title;
+    private readonly string _description;
+    protected readonly DateTime _date;
+    private readonly string _time;
+    private readonly Address _address;
 
-    public Event(string title, string description, string date, string time)
+    protected Event(string title, string description, DateTime date, string time, Address address)
     {
-        _title = title;
-        _description = description;
-        _date = date;
-        _time = time;
-       
-
+        this._title = title;
+        this._description = description;
+        this._date = date;
+        this._time = time;
+        this._address = address;
     }
 
     public string GetStandardDetails()
     {
-        return($"Event: {_title}\nDescription:{_description} - Date/time : {_date} - {_time}\n{_address.GetAddress()}");
-
+        return $"{this._title}\n{this._description}\n{this._date.ToShortDateString()} at {this._time}\n{this._address.AddressToString()}";
     }
 
-    public string GetShortDescription()
+    public virtual string GetFullDetails()
     {
-        return($"Event: {_title} - Date:{_date}");
+        return GetStandardDetails();
     }
 
-    public void GetEventType(Event type)
-    {
-        Console.WriteLine("The type of Event  {0}" , type.GetType());
-    }
-
-    public void SetAddress(string address, string city, string state, string country)
-    {
-        _address.SetAddress(address, city, state, country);
-    }
-
-    
-
+    public abstract string GetShortDescription();
 }

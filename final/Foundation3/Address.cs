@@ -7,32 +7,18 @@ public class Address
     private string _state;
     private string _country;
 
-    public Address()
-    {
-
-    }
     public Address(string address, string city, string state, string country)
     {
-        _streetAddress = address;
-        _city = city;
-        _state = state;
-        _country = country;
+        this._streetAddress = address;
+        this._city = city;
+        this._state = state;
+        this._country = country;
 
     }
 
-   
-    public string GetAddress()
+    public string AddressToString() 
     {
-        return($"Address: {_streetAddress}, {_city}, {_state}, {_country}");
-
-    }
-
-    public void SetAddress(string address, string city, string state, string country)
-    {
-        _streetAddress = address;
-        _city = city;
-        _state = state;
-        _country = country;
+        return $"{this._streetAddress}\n{this._city}\n{this._state}\n{this._country}";
     }
 
 }
